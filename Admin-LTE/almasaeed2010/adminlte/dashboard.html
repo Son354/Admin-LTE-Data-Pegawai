@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Data Pegawai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- AdminLTE CSS -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/dashboard-custom.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="dashboard.html" class="nav-link">Data Pegawai</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="#" class="brand-link text-center">
+      <span class="brand-text font-weight-bold">Data Pegawai</span>
+    </a>
+
+    <div class="sidebar">
+      <nav class="mt-3">
+        <ul class="nav nav-pills nav-sidebar flex-column">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link active">
+              <i class="nav-icon fas fa-id-badge"></i>
+              <p>Data Pegawai</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="HalamanSoni.html" class="nav-link active">
+              <i class="nav-icon fas fa-id-badge"></i>
+              <p>Dashboard Soni</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="content-wrapper">
+    <div class="content-header text-center">
+      <h2 class="font-weight-bold mt-3">Selamat Datang di Dashboard Data Pegawai</h2>
+      <p class="text-muted">Pantau statistik dan aktivitas pegawai dengan mudah</p>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Total Pegawai -->
+          <div class="col-lg-4 col-12 mb-4">
+            <div class="info-box bg-gradient-primary card-shadow">
+              <span class="info-box-icon"><i class="fas fa-users"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Pegawai</span>
+                <span class="info-box-number">125</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kehadiran Hari Ini -->
+          <div class="col-lg-4 col-12 mb-4">
+            <div class="info-box bg-gradient-success card-shadow">
+              <span class="info-box-icon"><i class="fas fa-user-check"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Kehadiran Hari Ini</span>
+                <span class="info-box-number">98%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pegawai Cuti -->
+          <div class="col-lg-4 col-12 mb-4">
+            <div class="info-box bg-gradient-warning card-shadow">
+              <span class="info-box-icon"><i class="fas fa-plane-departure"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Pegawai Cuti</span>
+                <span class="info-box-number">5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="card card-outline card-info card-shadow mt-4">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-chart-pie mr-2"></i> Statistik Kehadiran Mingguan</h3>
+          </div>
+          <div class="card-body">
+            <canvas id="attendanceChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer text-center">
+    <strong>© 2025 Sistem Data Pegawai.</strong> All rights reserved.
+  </footer>
+</div>
+
+<!-- Scripts -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('attendanceChart');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum'],
+      datasets: [{
+        label: 'Kehadiran (%)',
+        data: [95, 98, 90, 97, 99],
+        backgroundColor: '#007bff'
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+</script>
+</body>
+</html>
